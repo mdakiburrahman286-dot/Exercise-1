@@ -26,23 +26,30 @@ using namespace std;
     There is no need to edit compile.bat for this exercise.
 */
 
+#include <iostream>
+#include <string>
+using namespace std;
+
 int main(int argc, char* argv[]) {
-    string input = argv[1];
+    string str = argv[1];
 
-    for (char c : input) {
-        if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u') {
-            cout << c;
+    string vowels = "";
+    string consonants = "";
+
+    for (char c : str) {
+        if (isalpha(c)) {
+            char lower = tolower(c);
+
+            if (lower == 'a' || lower == 'e' || lower == 'i' ||
+                lower == 'o' || lower == 'u' || lower == 'y') {
+                vowels += c;
+            } else {
+                consonants += c;
+            }
         }
     }
 
-    cout << " ";
-
-    for (char c : input) {
-        if (c >= 'a' && c <= 'z' &&
-            c != 'a' && c != 'e' && c != 'i' && c != 'o' && c != 'u') {
-            cout << c;
-        }
-    }
+    cout << vowels << " " << consonants << endl;
 
     return 0;
 }
